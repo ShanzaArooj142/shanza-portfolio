@@ -1,110 +1,459 @@
-import React, { useState, useEffect } from 'react';
-import { FaGithub } from 'react-icons/fa';
+import React from "react";
+import { IoMdDownload } from "react-icons/io";
+import GhostFibers from './GhostFibers';
 
 const Navbar = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
-    <div className="relative  bg-[#05050A] text-white overflow-hidden flex flex-col font-sans selection:bg-purple-500 selection:text-white">
+    <div className="min-h-screen bg-[#05050A] text-white overflow-hidden">
 
-      <div
-        className="pointer-events-none absolute -inset-px transition-opacity duration-300 z-0"
-        style={{
-          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(147, 51, 234, 0.15), transparent 80%)`
-        }}
-      />
+      {/* ================= BACKGROUND GLOW ================= */}
+      <div className="fixed inset-0 pointer-events-none">
+        {/* Top glow */}
+        <div   className="    absolute  top-[-200px]  left-1/2  -translate-x-1/2  w-[700px] h-[400px] bg-[#9333EA]/20 rounded-full blur-[130px] " />
 
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Left glow */}
+        <div
+          className="
+            absolute
+            top-[300px]
+            left-[-200px]
+            w-[450px]
+            h-[450px]
+            bg-[#9333EA]/10
+            rounded-full
+            blur-[120px]
+          "
+        />
 
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px] animate-pulse duration-1000"></div>
+        {/* Right glow */}
+        <div
+          className="
+            absolute
+            top-[250px]
+            right-[-200px]
+            w-[450px]
+            h-[450px]
+            bg-[#06B6D4]/10
+            rounded-full
+            blur-[120px]
+          "
+        />
 
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[140px] animate-pulse duration-700"></div>
-
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293d12_1px,transparent_1px),linear-gradient(to_bottom,#1f293d12_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
       </div>
 
-      <header className="relative z-50 w-full px-6 py-4 flex justify-center">
 
-        <nav className="w-full max-w-6xl bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 flex items-center justify-between shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] hover:border-purple-500/40 transition-colors duration-500">
+      {/* ================= NAVBAR ================= */}
+      <nav
+        className="
+          relative
+          z-50
+          mx-auto
+          mt-5
+          w-[92%]
+          max-w-6xl
+          min-h-[70px]
+          px-4
+          sm:px-5
+          md:px-7
 
-          <div className="flex items-center gap-3">
+          rounded-full
 
-            <img
-              src="/portfoliologo.jpeg"
-              alt="ShaNza ArOoJ Logo"
-              className="w-10 h-10 object-contain rounded-full"
-            />
+          bg-[#0a0a0f]/80
+          backdrop-blur-xl
 
-            <div className="text-lg font-extrabold tracking-widest bg-gradient-to-r from-white via-purple-300 to-cyan-400 bg-clip-text text-transparent font-serif">
-              ShaNza ArOoJ
+          border
+          border-purple-500/20
+
+          shadow-[0_0_25px_rgba(147,51,234,0.18)]
+
+          flex
+          items-center
+          justify-between
+          gap-3
+        "
+      >
+
+        {/* ================= LOGO + NAME ================= */}
+       {/* <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+
+          
+          <div>
+            <div>
+              
             </div>
 
+            <span
+              className="
+                text-base
+                sm:text-lg
+                font-serif
+                tracking-tight
+                text-purple-300
+              "
+            >
+              
+            </span>
           </div>
 
-          <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
 
-            <a
-              href="#home"
-              className="hover:text-white hover:scale-105 transition-all"
-            >
-              Home
-            </a>
+         
+          <span
+            className="
+              hidden
+              sm:block
 
-            <a
-              href="#about"
-              className="hover:text-white hover:scale-105 transition-all"
-            >
-              About
-            </a>
+              text-xs
+              md:text-sm
 
-            <a
-              href="#projects"
-              className="hover:text-white hover:scale-105 transition-all"
-            >
-              Projects
-            </a>
+              font-medium
+              tracking-wide
+              text-gray-200
 
-            <a
-              href="#contact"
-              className="hover:text-white hover:scale-105 transition-all"
-            >
-              Contact
-            </a>
+              whitespace-nowrap
+            "
+          >
+            SHANZA AROOJ
+          </span>
 
-          </div>
+        </div>*/}
+
+
+        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+
+  {/* Logo */}
+  <div
+    className="
+      relative
+      w-12
+      h-12
+      rounded-full
+      overflow-hidden
+      shrink-0
+
+      border
+      border-purple-400/30
+
+      bg-[#05050A]
+
+      shadow-[0_0_12px_rgba(147,51,234,0.35)]
+    "
+  >
+
+    <img
+      src="/logo5.jpeg"
+      alt="ShaNza ArOoJ Logo"
+      className="
+        absolute
+        w-full
+        h-full
+        object-cover
+        scale-[1.8]
+      "
+    />
+
+    {/* Logo Glow */}
+    <div
+      className="
+        absolute
+        inset-0
+        rounded-full
+        pointer-events-none
+
+        bg-gradient-to-br
+        from-purple-500/10
+        via-transparent
+        to-cyan-500/15
+      "
+    />
+
+  </div>
+
+
+  {/* Name */}
+  <div
+    className="
+      hidden
+      sm:block
+
+      text-lg
+      font-extrabold
+      tracking-widest
+
+      bg-gradient-to-r
+      from-white
+      via-purple-300
+      to-cyan-400
+
+      bg-clip-text
+      text-transparent
+
+      font-serif
+
+      whitespace-nowrap
+    "
+  >
+    ShaNza ArOoJ
+  </div>
+
+</div>
+
+
+        {/* ================= DESKTOP NAVIGATION ================= */}
+        <div
+          className="
+            hidden
+            lg:flex
+            items-center
+            gap-2
+          "
+        >
 
           <a
-            href="https://github.com/ShanzaArooj142"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative group overflow-hidden rounded-full p-[1px]"
+            href="#home"
+            className="
+              px-4
+              py-2.5
+              rounded-full
+
+              text-sm
+              text-gray-300
+
+              transition-all
+              duration-300
+
+              hover:text-white
+              hover:bg-purple-500/20
+            "
           >
-
-            <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 animate-pulse"></span>
-
-            <div className="relative flex items-center gap-2 bg-[#0a0a0f] px-5 py-2 rounded-full text-sm font-semibold text-white group-hover:bg-opacity-80 transition">
-
-              <FaGithub className="w-4 h-4" />
-
-              <span>GITHUB</span>
-
-            </div>
-
+            Home
           </a>
 
-        </nav>
 
-      </header>
+          <a
+            href="#about"
+            className="
+              px-4
+              py-2.5
+              rounded-full
+
+              text-sm
+              text-gray-300
+
+              transition-all
+              duration-300
+
+              hover:text-white
+              hover:bg-purple-500/20
+            "
+          >
+            About
+          </a>
+
+
+          <a
+            href="#projects"
+            className="
+              px-4
+              py-2.5
+              rounded-full
+
+              text-sm
+              text-gray-300
+
+              transition-all
+              duration-300
+
+              hover:text-white
+              hover:bg-purple-500/20
+            "
+          >
+            Projects
+          </a>
+
+
+          <a
+            href="#tech stack"
+            className="
+              px-4
+              py-2.5
+              rounded-full
+
+              text-sm
+              text-gray-300
+
+              transition-all
+              duration-300
+
+              hover:text-white
+              hover:bg-purple-500/20
+            "
+          >
+            Tech Stack
+          </a>
+
+
+          <a
+            href="#contact"
+            className="
+              px-4
+              py-2.5
+              rounded-full
+
+              text-sm
+              text-gray-300
+
+              transition-all
+              duration-300
+
+              hover:text-white
+              hover:bg-purple-500/20
+            "
+          >
+            Contact
+          </a>
+
+        </div>
+
+
+        {/* ================= DOWNLOAD CV ================= */}
+        <a
+          href="#contact"
+          className="
+            hidden
+            sm:flex
+
+            shrink-0
+
+            relative
+            group
+            overflow-hidden
+
+            items-center
+            justify-center
+            gap-2
+
+            px-4
+            sm:px-5
+            md:px-6
+
+            py-2.5
+            sm:py-3
+
+            rounded-full
+
+            bg-gradient-to-r
+            from-purple-600
+            to-cyan-500
+
+            text-white
+            text-xs
+            sm:text-sm
+            font-medium
+
+            whitespace-nowrap
+
+            transition-all
+            duration-300
+
+            shadow-[0_0_20px_rgba(147,51,234,0.25)]
+          "
+        >
+
+          {/* Hover gradient */}
+          <span
+            className="
+              absolute
+              inset-0
+
+              bg-gradient-to-r
+              from-cyan-500
+              via-purple-600
+              to-fuchsia-500
+
+              translate-x-[-100%]
+
+              group-hover:translate-x-0
+
+              transition-transform
+              duration-500
+              ease-out
+            "
+          />
+
+
+          {/* TEXT + ICON */}
+          <span
+            className="
+              relative
+              z-10
+
+              flex
+              items-center
+              justify-center
+              gap-2
+            "
+          >
+
+            <span>
+              Download CV
+            </span>
+
+            <IoMdDownload
+              className="
+                w-4
+                h-4
+
+                shrink-0
+
+                transition-transform
+                duration-300
+
+                group-hover:translate-y-0.5
+              "
+            />
+
+          </span>
+
+        </a>
+
+
+        {/* ================= MOBILE MENU ================= */}
+        <button
+          className="
+            lg:hidden
+
+            w-10
+            h-10
+
+            shrink-0
+
+            rounded-full
+
+            border
+            border-white/10
+
+            bg-white/5
+
+            flex
+            items-center
+            justify-center
+
+            text-gray-300
+
+            transition-all
+            duration-300
+
+            hover:bg-purple-500/20
+            hover:text-white
+          "
+        >
+          ☰
+        </button>
+
+      </nav>
+
+
+     <GhostFibers/>
 
     </div>
   );
